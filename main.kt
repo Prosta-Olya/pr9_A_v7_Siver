@@ -1,23 +1,9 @@
 fun main(){
     try {
-        println("Введите данные собаки:")
-        println("Кличка:")
-        val name = readLine()!!.toString()
-        println("Порода:")
+        println("Введите породу собаки:")
         val breed = readLine()!!.toString()
-        println("Рост по холке(см)")
-        val height = readLine()!!.toDouble()
-        println("Окрас шерсти:")
-        val color = readLine()!!.toString()
-        println("Вес(кг):")
-        val weight = readLine()!!.toDouble()
-        println("Характер:")
-        val temperament = readLine()!!.toString()
-        if(height<= 0 || weight <= 0){
-            println("Ошибка")
-            return
-        }
         if (breed == "Овчарка" || breed == "овчарка") {
+
             println("Овчарка обучена охране? \n 1 - Да \n 2 - Нет")
             val trained = readLine()!!.toInt()
             val isTrainedGuard = when {
@@ -25,26 +11,37 @@ fun main(){
                 trained == 2 -> false
                 else -> return
             }
-            val dog = GermanShepherd(name, height, color, weight, temperament, isTrainedGuard)
+            println("Введите данные собаки (имя, рост по холке, окрас шерсти, вес, характер, возраст):")
+            var dog:GermanShepherd = GermanShepherd(readln(), readLine()!!.toDouble(), readln(),readLine()!!.toDouble(), readln(), isTrainedGuard, readLine()!!.toInt())
             dog.Info()
+            dog.Food()
+            dog.IdealWeight()
             dog.Play()
             dog.Voice()
             dog.Guard()
             dog.Assist()
             dog.Training()
+            dog.HumanAge()
+            dog.HeightAndAge()
         } else if (breed == "Бульдог" || breed == "бульдог") {
-            println("Введите число - уровень упрямства бульдога")
-            val stubbornness = readLine()!!.toInt()
-            val dog = Bulldog(name, height, color, weight, temperament, stubbornness)
+            println("Введите данные собаки (имя, рост по холке, окрас шерсти, вес, характер, число - уровень упрямства бульдога, возраст):")
+            var dog:Bulldog = Bulldog(readln(), readLine()!!.toDouble(), readln(),readLine()!!.toDouble(), readln(), readLine()!!.toInt(), readLine()!!.toInt())
             dog.Info()
+            dog.Food()
+            dog.IdealWeight()
             dog.Play()
             dog.Voice()
             dog.Stubborn()
             dog.Sleep()
             dog.ToLick()
+            dog.HumanAge()
+            dog.HeightAndAge()
         } else {
-            val dog = Dog(name, breed, height, color, weight, temperament)
+            println("Введите данные собаки (имя, рост по холке, окрас шерсти, вес, характер, возраст):")
+            var dog:Dog = Dog(readln(), breed, readLine()!!.toDouble(), readln(),readLine()!!.toDouble(), readln(), readLine()!!.toInt())
             dog.Info()
+            dog.Food()
+            dog.IdealWeight()
             dog.Play()
             dog.Voice()
         }
